@@ -66,41 +66,6 @@ function firstScreenStack({navigation}) {
     </Stack.Navigator>
   );
 }
-/*
-function secondScreenStack({navigation}) {
-  return (
-    <Stack.Navigator
-      initialRouteName="SecondPage"
-      screenOptions={{
-        headerLeft: () => (
-          <NavigationDrawerStructure navigationProps={navigation} />
-        ),
-        headerStyle: {
-          backgroundColor: '#f4511e', //Set Header color
-        },
-        headerTintColor: '#fff', //Set Header text color
-        headerTitleStyle: {
-          fontWeight: 'bold', //Set Header text style
-        },
-      }}>
-      <Stack.Screen
-        name="SecondPage"
-        component={SecondPage}
-        options={{
-          title: 'Second Page', //Set Header Title
-        }}
-      />
-      <Stack.Screen
-        name="ThirdPage"
-        component={ThirdPage}
-        options={{
-          title: 'Third Page', //Set Header Title
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-*/
 
 function App() {
   return (
