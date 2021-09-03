@@ -36,7 +36,7 @@ const CustomSidebarMenu = (props) => {
         textAlign: 'center',
         color: 'grey'
       }}>Jane Doe</Text>
-      <Button title="Edit Profile"></Button>
+      <Button title="Edit Profile" ></Button>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
@@ -46,7 +46,7 @@ const CustomSidebarMenu = (props) => {
           textAlign: 'center',
           color: 'grey'
         }}>
-        www.aboutreact.com
+        www.BookStore.com
       </Text>
     </SafeAreaView>
   );
@@ -70,6 +70,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  loginText: {
+    color: 'white',
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+},
 });
 
 export default CustomSidebarMenu;
