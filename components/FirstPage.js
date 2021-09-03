@@ -22,14 +22,6 @@ const Home = ({navigation}) => {
             }}>
             This is the Home Page under Home Page Option
           </Text>
-          <Button
-            onPress={() => navigation.navigate('SecondPage')}
-            title="Go to Second Page"
-          />
-          <Button
-            onPress={() => navigation.navigate('ThirdPage')}
-            title="Go to Third Page"
-          />
         </View>
         <Text
           style={{
