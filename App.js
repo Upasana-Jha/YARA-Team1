@@ -1,16 +1,17 @@
-//App.js
-import 'react-native-gesture-handler';
+// Custom Navigation Drawer / Sidebar with Image and Icon in Menu Options
+// https://aboutreact.com/custom-navigation-drawer-sidebar-with-image-and-icon-in-menu-options/
 
+import 'react-native-gesture-handler';
+import { Image,FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View,Button } from "react-native";
 import * as React from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
+//import {View, TouchableOpacity, Image} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import Home from './pages/FirstPage';
-import SecondPage from './pages/SecondPage';
-import ThirdPage from './pages/ThirdPage';
+
 
 // Import Custom Sidebar
 import CustomSidebarMenu from './CustomSidebarMenu';
@@ -42,13 +43,14 @@ const NavigationDrawerStructure = (props) => {
 };
 
 function firstScreenStack({navigation}) {
+
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={Home}
         options={{
-          title: 'First Page', //Set Header Title
+          title: 'Home', //Set Header Title
           headerLeft: () => (
             <NavigationDrawerStructure
               navigationProps={navigation}
@@ -66,21 +68,33 @@ function firstScreenStack({navigation}) {
     </Stack.Navigator>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  tinyLogo: {
+    width: 30,
+    height: 30,
+  },
+});
 
 function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        drawerContentOptions={{
-          activeTintColor: '#e91e63',
-          itemStyle: {marginVertical: 5},
-        }}
+        drawerContentOptions={{activeTintColor: '#e91e63',itemStyle: {marginVertical: 5},}}
         drawerContent={(props) => <CustomSidebarMenu {...props} />}>
-        <Drawer.Screen
-          name="Home"
-          options={{drawerLabel: 'Home'}}
-          component={firstScreenStack}
-        />
+        <Drawer.Screen name="Home" options={{drawerLabel: 'Home',
+       drawerIcon: ({ focused, size }) => (
+        <Image
+        source={{
+          uri:
+          'https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/blue_repicthousebase_1484336386-1.png',
+        }}
+          style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
+        />),}} 
+        component={firstScreenStack} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
