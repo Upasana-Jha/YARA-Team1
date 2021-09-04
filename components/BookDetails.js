@@ -1,9 +1,11 @@
+import { useNavigation } from "@react-navigation/core";
 import React, { useState} from "react";
 import { Image,FlatList, Button,
    StyleSheet, Text, TouchableOpacity,
    TouchableHighlight,Alert,
    View } from "react-native";
-import { getCustomers } from "../service/BookData";
+   import { Appbar } from 'react-native-paper';
+import { getBooks } from "../service/BookData";
 import Menu from './Menu';
 
 const showAlert = (item) =>
@@ -47,7 +49,7 @@ const Item = ({ item, onAddCart,onMore, onPress,style }) => (
 
 const BookDetails =  () => {
   const [selectedId, setSelectedId] = useState(null);
-
+  const navigation = useNavigation();
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "#ffffff" :"#ffffff";
     return (
@@ -60,14 +62,29 @@ const BookDetails =  () => {
       />
     );
   };
+
+  const _goBack = () => console.log('Went back');
+
+  const _handleSearch = () => console.log('Searching');
+
+  const _handleMore = () => console.log('Shown more');
+
  
   return (
     <View style={styles.maincontainer}>
       <View style={{flex:1}}>
-        <Menu/>
+        
+      <Appbar.Header>
+        <Appbar.BackAction   onPress={() => navigation.openDrawer()} />
+        <Appbar.Content title="Books Details" subtitle="" titleStyle={{fontSize:20,fontFamily:"Montserrat-Regular"}} />
+        <Appbar.Action icon="bell" onPress={_handleMore} />
+        <Appbar.Action icon="share-variant" onPress={_handleSearch} />
+        <Appbar.Action icon="magnify"  onPress={_handleSearch} />
+
+      </Appbar.Header>
         <FlatList 
         style={{flex:5}}
-          data={getCustomers()}
+          data={getBooks()}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           extraData={selectedId}
@@ -124,13 +141,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   title: {
-    fontSize: 24,
+    fontSize: 19,
     fontFamily:"Montserrat-Light",
+    fontWeight:"400",
+    color:'#6a6a6a'
   },
   details: {
     fontSize: 14,
     fontFamily:"Montserrat-Light",
-    marginBottom:3
+    marginBottom:3,
+    fontWeight:"400",
+    color:'gray'
   },
   bookCover: {
     height: 150,
