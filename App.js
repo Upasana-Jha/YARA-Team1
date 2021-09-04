@@ -1,4 +1,3 @@
-
 import 'react-native-gesture-handler';
 import { Image,FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View,Button } from "react-native";
 import * as React from 'react';
@@ -8,16 +7,16 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 //import {Ionicons} from "@expo/vector-icons";
-import { Icon } from "react-native-elements";
-import Home from './pages/HomePage';
-import CustomerApp from './pages/Book_Details';
-import Login from './pages/Login';
-import CartPage from './pages/CartPage';
-import OrderPlaced from './pages/OrderPlaced';
-import MyComponent from './AppBar';
+import Home from './components/HomePage';
+import CustomerApp from './components/BookDetails';
+import Login from './components/Login';
+import CartPage from './components/CartPage';
+import OrderPlaced from './components/OrderPlaced';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // Import Custom Sidebar
-import CustomSidebarMenu from './CustomSidebarMenu';
+import CustomSidebarMenu from './CustomSideBarMenu';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -67,51 +66,33 @@ function App() {
       
         <Drawer.Screen name="Home" 
             options={{drawerLabel: 'Home', headerTitle:"Home", headerShown:false,  /// tiny icon home
-            drawerIcon: ({ focused, size }) => (
-             <Image
-             source={{
-               uri:
-               'https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/blue_repicthousebase_1484336386-1.png',
-             }}
-               style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
-             />),}} 
+            drawerIcon: ({ focused, size }) => 
+
+              <Icon
+                size={23}
+                name={'home-outline'}></Icon>
+             ,}} 
         component={Home} header={false} />
        
         <Drawer.Screen name="BookDetails"
         options={{drawerLabel: 'Book Details',    headerShown:false,   /// tiny icon home
-        drawerIcon: ({ focused, size }) => (
-         <Image
-         source={{
-           uri:
-           'https://icon-library.com/images/more-details-icon/more-details-icon-7.jpg',
-         }}
-           style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
-         />),}} 
+        drawerIcon: ({ focused, size }) =>  <Icon
+        size={23}
+        name={'newspaper-outline'}></Icon>,}} 
         component={CustomerApp} />
         <Drawer.Screen name="Cart"  options={{drawerLabel: 'Cart', headerShown:false,
-        drawerIcon: ({ focused, size }) => (
-          <Image
-          source={{
-            uri:
-            'https://www.nicepng.com/png/full/829-8298681_free-png-download-shopping-cart-clipart-png-photo.png',
-          }}
-            style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
-          />),}} 
+        drawerIcon: ({ focused, size }) =>  <Icon
+        size={23}
+        name={'cart-outline'}></Icon>,}} 
           component={CartPage} />
         <Drawer.Screen name="Orders"  options={{drawerLabel: 'Orders', headerShown:false,
-        drawerIcon: ({ focused, size }) => (
-          <Image
-          source={{
-            uri:
-            'https://image.shutterstock.com/image-vector/logistics-package-vector-icon-600w-1298913529.jpg',
-          }}
-            style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
-          />),}} 
+        drawerIcon: ({ focused, size }) =>  <Icon1
+        size={23}
+        name={'shopping-outline'}></Icon1>,}} 
         component={OrderPlaced} />
 
         <Drawer.Screen name="LOGOUT"  component={Login} />
       </Drawer.Navigator>
-      
     </NavigationContainer>
   );
 }
