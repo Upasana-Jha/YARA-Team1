@@ -24,7 +24,7 @@ export default class Login extends Component {
 
     onLoginButton = () => {
       
-            this.props.navigation.navigate('About', { name:this.state.email});
+            this.props.navigation.navigate('SignIn', { name:this.state.email});
            
     }
     
@@ -44,7 +44,8 @@ export default class Login extends Component {
             <View>
             <View>
                 <Image 
-                 source={require('../components/BookStore.png')}
+                 source=
+                 {{uri:"https://training.pyther.com/yara/15-day/03-BookStore/BookStore.jpg"}}
                  style={{position:'absolute',top:0}}
                 />
                 </View>
@@ -53,27 +54,7 @@ export default class Login extends Component {
                 <Text style={styles.base2Text}>to Book Store</Text>
                 <Text style={styles.base1Text}>Let's get Started!</Text>
                 
-                {/*<View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon}
-                        source={{ uri: 'https://training.pyther.com/icons/user.png' }} />
-                    <TextInput style={styles.inputs}
-                        placeholder="Email"
-                        keyboardType="email-address"
-                        underlineColorAndroid='transparent'
-                        value={this.state.email}
-                        onChangeText={(email) => this.setState({ email })} />
-                </View>
-
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon}
-                        source={{ uri: 'https://training.pyther.com/icons/key.png' }} />
-                    <TextInput style={styles.inputs}
-                        placeholder="Password"
-                        secureTextEntry={true}
-                        underlineColorAndroid='transparent'
-                        value={this.state.password}
-                        onChangeText={(password) => this.setState({ password })} />
-        </View>*/}
+                
                  <View style={{flex:1,flexDirection:'row'}}>
                  <TouchableHighlight style={{flex:1}} onPress={() => this.onLoginButton()}>
                     <Text style={styles.loginText}></Text>
@@ -92,13 +73,6 @@ export default class Login extends Component {
                     <Text style={styles.loginText}>SIGN IN</Text>
                 </TouchableHighlight>
 
-                
-                {/*<TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.abc]} onPress={() => this.onLoginButton()}>
-                    <Text style={styles.loginText}>SIGN IN</Text>
-                </TouchableHighlight>
-                <TouchableHighlight style={[styles.buttonContainer1, styles.loginButton1,styles.abc1]} onPress={() => this.onSignupButton()}>
-                    <Text style={styles.loginText}>SIGN UP</Text>
-    </TouchableHighlight>*/}
             </View>
             <View style={{flex:1,flexDirection:'row',marginTop:70}}>
                  <TouchableHighlight style={{flex:1}} onPress={() => this.onLoginButton()}>
@@ -118,13 +92,6 @@ export default class Login extends Component {
                     <Text style={styles.loginText}>SIGN IN</Text>
                 </TouchableHighlight>
 
-                
-                {/*<TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.abc]} onPress={() => this.onLoginButton()}>
-                    <Text style={styles.loginText}>SIGN IN</Text>
-                </TouchableHighlight>
-                <TouchableHighlight style={[styles.buttonContainer1, styles.loginButton1,styles.abc1]} onPress={() => this.onSignupButton()}>
-                    <Text style={styles.loginText}>SIGN UP</Text>
-    </TouchableHighlight>*/}
             </View>
             </View>
             </View>
