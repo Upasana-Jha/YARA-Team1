@@ -5,9 +5,9 @@ import { Image,FlatList,
    TouchableHighlight,Alert,
    View } from "react-native";
 import { deleteCustomer, getCustomers, updateCustomer } from "../service/CustomerSQL";
-import Menunew from "./AppMenunew";
 import { useNavigation } from '@react-navigation/native';
-import orderplaced from "./OrderPlaced";
+import orderplaced from "./OrderPlaced.js";
+import Menu from "./Menu";
 
 let DATA = [
     {id:'1', "title":"Thats not my bunny", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9780746066928_cover_image.jpg"},
@@ -34,7 +34,7 @@ const showAlert = () =>{
     "You want to Place order",
     
     [
-        {text: 'Yes', onPress: () => navigation.navigate('orderplaced')},
+        {text: 'Yes', onPress: () => navigation.navigate('OrderPlaced')},
         {text: 'No', onPress: () => console.log('No button clicked'), style: 'cancel'},
       ],
     {
@@ -73,45 +73,55 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
         <View style={{
             flex: 1,
             flexDirection: 'row', }}>
-              <TouchableHighlight
-        style={{flex:1,backgroundColor: "#B2BEB5",
-        height: 30,
-    
-        flex: 0.5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 15,
-        
-        borderRadius:20,
-        marginTop:10,}} 
-        onPress={showAlert}>
-        <Text style={styles.loginText}>-</Text>
-      </TouchableHighlight>
-      <TouchableHighlight
-          style={{backgroundColor: "#ffffff",
-          height: 15,
-          flex: 0.7,
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginBottom: 15,
-          borderRadius: 20,
-          marginTop:10,}}  
-      onPress={()=>{}}>
-        <Text style={styles.loginText}>1</Text>
-      </TouchableHighlight>
-      <TouchableHighlight
-          style={{flex:2,backgroundColor: "#B2BEB5",
-          height: 30,
-          flex: 0.5,
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginBottom: 15,
 
-          borderRadius: 20,
-          marginTop:10,}} 
-       >
-        <Text style={styles.loginText}>+</Text>
-      </TouchableHighlight>
+
+                    <TouchableHighlight
+                style={{backgroundColor: "#B2BEB5",
+                height: 30,
+            
+                flex: 0.5,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: 15,
+                
+                borderRadius:20,
+                marginTop:10,}} 
+                onPress={showAlert}>
+                <Text style={styles.plusminusicon}>-</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+                style={{backgroundColor: "#ffffff",
+                height: 25,
+                flex: 0.7,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: 15,
+                borderRadius: 20,
+                marginTop:10,}}  
+                onPress={()=>{}}>
+
+                <Text style={{fontSize:25}}>1</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+                style={{backgroundColor: "#B2BEB5",
+                height: 30,
+                flex: 0.5,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: 15,
+                borderRadius: 60,
+                marginTop:10,}} >
+                <Text style={styles.plusminusicon}>+</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+                style={{backgroundColor: "#ffffff",
+                flex: 2.4,
+                }} >
+                <Text ></Text>
+            </TouchableHighlight>
+            
         </View>
     </View>
     </View>   
@@ -175,6 +185,7 @@ console.log("DATA: "+DATA)
 
   return (
     <View style={styles.maincontainer}>
+        <Menu/>
     
           <FlatList
           
@@ -216,7 +227,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 15,
     
-    borderRadius: 8,
+    borderRadius: 50,
     marginTop:10,
    
    
@@ -244,6 +255,13 @@ loginButton1: {
 loginText: {
     color: 'white',
     fontWeight:"800"
+},
+plusminusicon: {
+    color: 'gray',
+    fontSize:20,
+    
+    fontWeight:"800",
+   
 },
   item: {
     padding: 0,
