@@ -1,47 +1,4 @@
-/*
-import * as React from 'react';
-import {Button, View, Text, SafeAreaView} from 'react-native';
 
-const Home = ({navigation}) => {
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, padding: 16}}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text
-            style={{
-              fontSize: 25,
-              textAlign: 'center',
-              marginBottom: 16,
-            }}>
-            This is the Home Page under Home Page Option
-          </Text>
-        </View>
-        <Text
-          style={{
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-          Custom React Navigate Drawer
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-          www.BookStore.com
-        </Text>
-      </View>
-    </SafeAreaView>
-  );
-};
-*/
 import React, { useEffect, useState} from "react";
 import { Image,FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View,Button, Dimensions } from "react-native";
 //mport { RadioButton } from 'react-native-paper';
@@ -64,60 +21,9 @@ let DATA = [
   
   ];
 
-let DATA1=[
-  {id:'20',"title":"First Colouring", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781474985420_cover_image.jpg"},
-  {id:'21',"title":"Ready for Writing", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781474986694_cover_image.jpg"},
-  {id:'22',"title":"corona virus", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781474991513_cover_image.jpg"}
-
-];
 const numColumns=2
 const WIDTH=Dimensions.get('window').width
-const Item = ({ item,item1, onPress,onPress1,onDelete,onEdit, style }) => (
-  
-  <View style={{
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'stretch',
-  }}>
-    <TouchableOpacity onPress={onPress} style={[styles.item, style]}  backgroundColor={"#fff"}> 
-    <View style={{
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'center',
-      
-      alignItems: 'stretch' },styles.box}>
-        <Image
-        style={styles.tinyLogo}
-        source={{
-          uri: 'https:'+item.cover,
-          }}/>
-       
-       
-      <Text style={styles.title}>{item.title}</Text>
-    </View>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={onPress1} style={[styles.item, style]}  backgroundColor={"#fff"}> 
-    <View style={{
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'center',
-     
-      alignItems: 'stretch' },styles.box}>
-        <Image
-        style={styles.tinyLogo}
-        source={{
-          uri: 'https:'+item.cover,
-          }}/>
-          
-       
-      <Text style={styles.title}>{item.title}</Text>
-    </View>
-    </TouchableOpacity>
-  </View>
 
- 
-);
 
 
 const CustomerApp = () => {
