@@ -5,6 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 import { require } from "yargs";
 
 export default function orderplaced(){
+    const navigation = useNavigation();
+
+    const placeorder=(navigation)=>{
+        navigation.navigate('CartPage')
+      
+    }
+
+
     return(
 
     
@@ -28,10 +36,10 @@ export default function orderplaced(){
          
       </View>
       
-      <Text style={styles.title}>Order Placed </Text>
-      <Text style={styles.email}>Your order was placed successfully .</Text>
-      <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.submitButton]} onPress={() => placeorder()}>
-                    <Text style={styles.loginText}>Go To My Orders</Text>
+      <Text style={styles.title}>Order Placed! </Text>
+      <Text style={styles.email}>Your order was placed successfully.</Text>
+      <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.submitButton]} onPress={() => placeorder(navigation)}>
+                    <Text style={styles.loginText}> MY ORDERS</Text>
                 </TouchableHighlight>
   </TouchableOpacity>
     )
