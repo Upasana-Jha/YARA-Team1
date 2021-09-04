@@ -1,9 +1,10 @@
 import React, { useState , useEffect} from "react";
 import { Image,FlatList,
   SafeAreaView, StatusBar, Button,
-   StyleSheet, Text, TouchableOpacity, 
+   StyleSheet, Text, TouchableOpacity,
    TouchableHighlight,Alert,
    View } from "react-native";
+   import Student from './Student'
 import { deleteCustomer, getCustomers, updateCustomer } from "../service/CustomerSQL";
 import Menu from './Menu';
 import { useNavigation } from '@react-navigation/native';
@@ -15,10 +16,11 @@ let DATA = [
     {id:'3', "title":"Fat Cat on Mat", "author":"Mat", "publisher":"Indus House", "isbn":"746fs4222", "year":1999, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781409509233_cover_image.jpg"}
 
 ];
-const showAlert = () =>
+
+const showAlert = (item, navigation) =>
   Alert.alert(
     "Are you sure ",
-    "You want to add the item to cart?",
+    "You want to add '"+item.title+"' to cart?",
     
     [
       {
@@ -28,6 +30,7 @@ const showAlert = () =>
       {
         text: "OK",
         style: "ok",
+       
       },
     ],
     {
@@ -100,7 +103,7 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
 
           borderRadius: 5,
           marginTop:10,}} 
-       onPress={showAlert}>
+       onPress={()=>showAlert(item)}>
         <Text style={styles.loginText}>+ ADD CART</Text>
       </TouchableHighlight>
       
@@ -110,11 +113,7 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
 
 
     </View>
-    </View>
-
-            
-       
-      
+    </View> 
         
   </TouchableOpacity>
 );
@@ -163,15 +162,6 @@ console.log("DATA: "+DATA)
           }}
         onDelete={()=>{ondelete(item)
         }}
-          
-          /*
-          tempitems = []
-          tempitems = DATA.filter(item1 => item1.id !== item.id);
-          console.log(tempitems);
-          DATA = tempitems;
-          */
-         
-
     
         style={{ backgroundColor }}
       />
@@ -182,14 +172,14 @@ console.log("DATA: "+DATA)
 
   return (
     <View style={styles.maincontainer}>
-    
+      <Student/>
+    <Menu/>
           <FlatList
-          
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        extraData={selectedId}
-      />
+            data={DATA}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            extraData={selectedId}
+          />
        
       </View>
   );
@@ -198,7 +188,8 @@ console.log("DATA: "+DATA)
 const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
-    backgroundColor:"#ffffff"
+    backgroundColor:"#ffffff",
+    
   },
   container: {
     flex: 1,
