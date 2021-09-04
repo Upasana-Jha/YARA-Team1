@@ -7,13 +7,14 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-
+//import {Ionicons} from "@expo/vector-icons";
+import { Icon } from "react-native-elements";
 import Home from './pages/HomePage';
 import CustomerApp from './pages/Book_Details';
 import Login from './pages/Login';
 import CartPage from './pages/CartPage';
 import OrderPlaced from './pages/OrderPlaced';
-
+import MyComponent from './AppBar';
 
 // Import Custom Sidebar
 import CustomSidebarMenu from './CustomSidebarMenu';
@@ -44,23 +45,6 @@ const NavigationDrawerStructure = (props) => {
   );
 };
 
-function firstScreenStack({navigation}) {
-
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home}
-         
-      />
-    </Stack.Navigator>
-  );
-}
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -75,26 +59,26 @@ const styles = StyleSheet.create({
 function App() {
   return (
     <NavigationContainer>
-
-        <Drawer.Navigator
-        drawerContentOptions={{activeTintColor: '#e91e63',itemStyle: {marginVertical: 5},}}
-        drawerContent={(props) => <CustomSidebarMenu {...props} />}>
-        <Drawer.Screen name="Home" 
-        options={{drawerLabel: 'Home',      /// tiny icon home
-       drawerIcon: ({ focused, size }) => (
-        <Image
-        source={{
-          uri:
-          'https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/blue_repicthousebase_1484336386-1.png',
-        }}
-          style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
-        />),}} 
-        component={firstScreenStack} />
-
         
+        <Drawer.Navigator
+        
+        screenOptions={{activeTintColor: '#e91e63',itemStyle: {marginVertical: 5},}}
+        drawerContent={(props) => <CustomSidebarMenu {...props} />}>
+      
+        <Drawer.Screen name="Home" 
+            options={{drawerLabel: 'Home', headerTitle:"Home", headerShown:false,  /// tiny icon home
+            drawerIcon: ({ focused, size }) => (
+             <Image
+             source={{
+               uri:
+               'https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/blue_repicthousebase_1484336386-1.png',
+             }}
+               style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
+             />),}} 
+        component={Home} header={false} />
        
-        <Drawer.Screen name="BookDetails" 
-        options={{drawerLabel: 'Book Details',      /// tiny icon home
+        <Drawer.Screen name="BookDetails"
+        options={{drawerLabel: 'Book Details',    headerShown:false,   /// tiny icon home
         drawerIcon: ({ focused, size }) => (
          <Image
          source={{
@@ -104,7 +88,7 @@ function App() {
            style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
          />),}} 
         component={CustomerApp} />
-        <Drawer.Screen name="Cart"  options={{drawerLabel: 'Cart', 
+        <Drawer.Screen name="Cart"  options={{drawerLabel: 'Cart', headerShown:false,
         drawerIcon: ({ focused, size }) => (
           <Image
           source={{
@@ -114,7 +98,7 @@ function App() {
             style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
           />),}} 
           component={CartPage} />
-        <Drawer.Screen name="Orders"  options={{drawerLabel: 'Orders', 
+        <Drawer.Screen name="Orders"  options={{drawerLabel: 'Orders', headerShown:false,
         drawerIcon: ({ focused, size }) => (
           <Image
           source={{
@@ -125,7 +109,7 @@ function App() {
           />),}} 
         component={OrderPlaced} />
 
-        <Drawer.Screen name="LOGOUT" component={Login} />
+        <Drawer.Screen name="LOGOUT"  component={Login} />
       </Drawer.Navigator>
       
     </NavigationContainer>
