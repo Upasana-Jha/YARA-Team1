@@ -4,10 +4,10 @@ import { Image,FlatList,
    StyleSheet, Text, TouchableOpacity, 
    TouchableHighlight,Alert,
    View } from "react-native";
-import { deleteCustomer, getCustomers, updateCustomer } from "../service/CustomerSQL";
+
+
 import { useNavigation } from '@react-navigation/native';
-import orderplaced from "./OrderPlaced.js";
-import Menu from "./Menu";
+import orderplaced from "./OrderPlaced";
 
 let DATA = [
     {id:'1', "title":"Thats not my bunny", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9780746066928_cover_image.jpg"},
@@ -34,7 +34,7 @@ const showAlert = () =>{
     "You want to Place order",
     
     [
-        {text: 'Yes', onPress: () => navigation.navigate('OrderPlaced')},
+        {text: 'Yes', onPress: () => navigation.navigate('orderplaced')},
         {text: 'No', onPress: () => console.log('No button clicked'), style: 'cancel'},
       ],
     {
@@ -52,40 +52,46 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'center',
-            alignItems: 'stretch' }}>
+            alignItems: 'stretch',
+            height:160 }}>
+              <TouchableHighlight style={styles.image}>
                 <Image
                     style={styles.bookCover}
                     source={{
                     uri: 'https:'+item.cover,
                 }}/>
-                <View style={{flex:2,  height: 60}} >
-                <Text style={styles.title}>{item.title}</Text>
+                </TouchableHighlight>
+               
+                <View style={{flex:2,  height: 90}} >
+                <Text style={[styles.title]}>{item.title}</Text>
                 
 
               <Text style={styles.details}>By : {item.author}</Text>
               <Text style={styles.title}></Text>
-              <Text style={[styles.details],[styles.setcolour1]}> $15 </Text>
+              <Text style={[styles.setcolour1]}> $15 </Text>
               <Text style={styles.title}></Text>
 
               
 
        
+        
         <View style={{
             flex: 1,
             flexDirection: 'row', }}>
 
 
                     <TouchableHighlight
-                style={{backgroundColor: "#B2BEB5",
-                height: 30,
+                style={{backgroundColor: "#D3D3D3",
+                height: 25,
             
                 flex: 0.5,
                 justifyContent: 'center',
                 alignItems: 'center',
                 marginBottom: 15,
+                marginLeft:30,
                 
                 borderRadius:20,
-                marginTop:10,}} 
+                marginTop:12,}} 
                 onPress={showAlert}>
                 <Text style={styles.plusminusicon}>-</Text>
             </TouchableHighlight>
@@ -105,14 +111,14 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
             </TouchableHighlight>
 
             <TouchableHighlight
-                style={{backgroundColor: "#B2BEB5",
-                height: 30,
+                style={{backgroundColor: "#D3D3D3",
+                height: 25,
                 flex: 0.5,
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginBottom: 15,
+                marginBottom: 20,
                 borderRadius: 60,
-                marginTop:10,}} >
+                marginTop:12,}} >
                 <Text style={styles.plusminusicon}>+</Text>
             </TouchableHighlight>
             <TouchableHighlight
@@ -137,8 +143,8 @@ const CartPage =  () => {
   const [count, doRender] = useState(0);
   const [customers, setCustomers] = useState([]);
   const navigation = useNavigation();
- 
-  reloadCustomer = async()=>{
+ /*
+ reloadCustomer = async()=>{
     let customerlist= DATA;
     console.log("after get customers"+JSON.stringify(customerlist))
     setCustomers(customerlist);
@@ -162,6 +168,7 @@ const CartPage =  () => {
       reloadCustomer();
 
   }
+   */
   
 console.log("DATA: "+DATA)
   const renderItem = ({ item }) => {
@@ -181,11 +188,10 @@ console.log("DATA: "+DATA)
     );
   };
  
-  
+ 
 
   return (
     <View style={styles.maincontainer}>
-        <Menu/>
     
           <FlatList
           
@@ -195,15 +201,21 @@ console.log("DATA: "+DATA)
         extraData={selectedId}
       />
       <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.submitButton]} onPress ={()=> placeorder(navigation)}>
-                    <Text style={styles.loginText}>Place Order</Text>
+                    <Text style={styles.loginText}>PLACE ORDER</Text>
                 </TouchableHighlight>
       <Text style={styles.forTotal}>TOTAL
       </Text>
       <Text style={styles.forTotal1}>$24.00</Text>
       <Text style={styles.forTotal2}>Free Domestic Shipping</Text>
-       
-      <Text style={[styles.forpromocode,styles.setcolour]}>Apply Promo Code</Text>
-       
+      <Image 
+                 source={require('../components/Tag.png')}
+                 style={styles.tinyLogo}
+                />
+      <Text style={[styles.forpromocode,styles.setcolour]}>Add Promo Code</Text>
+      <Image 
+                 source={require('../components/arrow.png')}
+                 style={styles.tinyLogoforarrow}
+                />
       </View>
   );
 };
@@ -232,36 +244,15 @@ const styles = StyleSheet.create({
    
    
 },
-buttonContainer1: {
-  height: 45,
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginBottom: 20,
-  marginTop:30,
-  width: 250,
-  marginStart:65,
-  borderRadius: 20,
-  
-},
+
 loginButton: {
   backgroundColor: "#6200ee",
   fontWeight:"800"
 },
-loginButton1: {
-  backgroundColor: "#ffffff",
-  fontWeight:"800"
-},
+
 loginText: {
     color: 'white',
     fontWeight:"800"
-},
-plusminusicon: {
-    color: 'gray',
-    fontSize:20,
-    
-    fontWeight:"800",
-   
 },
   item: {
     padding: 0,
@@ -270,46 +261,52 @@ plusminusicon: {
    
   },
   title: {
-    fontSize: 24,
-    
+    fontSize: 20,
+    //fontFamily:'Montserrat-Regular',
+    marginLeft:30
     
     
 
   },
   details: {
     fontSize: 20,
+    marginLeft:30
+    //fontFamily:'Montserrat-ExtraLight',
     
   },
   
   bookCover: {
     
-    height: 150,
-    width: 90,
-    flex: 0.9,
-    marginEnd:10
+    height: 40,
+    width: 70,
+    flex: 0.8,
+    marginEnd:10,
+    marginLeft:23,
+    marginTop:18,
+    
 
   },
   submitButton: {
     position: 'absolute',
     height: 45,
-    bottom:0,
+    bottom:10,
     left:230,
 },
 forTotal:{
     position: 'absolute',
-    bottom:63,
+    bottom:80,
     left:10,
     fontSize: 20,
 },
 forTotal1:{
     position: 'absolute',
-    bottom:38,
+    bottom:50,
     left:10,
     fontSize: 20,
 },
 forTotal2:{
     position: 'absolute',
-    bottom:18,
+    bottom:25,
     left:12,
     fontSize: 15,
 },
@@ -317,7 +314,8 @@ forpromocode:{
     position: 'absolute',
     bottom:170,
     left:10,
-    fontSize: 30,
+    fontSize: 20,
+    marginLeft:40
     
     
 },
@@ -326,7 +324,47 @@ setcolour:{
 },
 setcolour1:{
     color:'#e75480',
+    marginLeft:30
 },
+image:{
+  width:120,
+  height:130,
+  borderRadius:51,
+  //borderColor:'#c5c2c2',
+  borderColor:'#ffffff',
+  borderWidth:1,
+  backgroundColor:'#ffffff',
+  //backgroundColor:'#D3D3D3',
+  shadowOpacity:0.1,
+  shadowRadius:15
+},
+fortitle:{
+  marginLeft:10,
+},
+tinyLogo: {
+  width: 40,
+  height: 30,
+  position: 'absolute',
+  bottom:168,
+
+},
+tinyLogoforarrow: {
+  width: 60,
+  height: 30,
+  position: 'absolute',
+  bottom:168,
+  marginLeft:320,
+
+},
+plusminusicon: {
+  color: 'gray',
+  fontSize:20,
+  
+  fontWeight:"800",
+ 
+ 
+},
+
   
 });
 
