@@ -15,10 +15,10 @@ Team Members -
     - Create a folder assets/fonts in your BookStoreApp and paste the .ttf files in it
     - Create a file named 'react-native.config.js' . Make sure it is in the main directory and not inside any folder
     - Paste the following line of code in react-native.config.js
-          - module.exports = { assets: ['./assets/fonts'] }
+          ->         module.exports = { assets: ['./assets/fonts'] }
     - In terminal (in BookStoreApp) , run the following command
-          - react-native link
-          - react-native run-ios
+         {react-native link} and then run 
+         {react-native run-ios}
          
           
           
