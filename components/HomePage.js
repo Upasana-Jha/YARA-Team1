@@ -2,6 +2,8 @@
 import React, { useEffect, useState} from "react";
 import { Image,FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View,Button, Dimensions } from "react-native";
 //mport { RadioButton } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
+import { Icon } from "react-native-elements";
 
 //import {addCustomer,deleteCustomer,getCustomers,updateAsyncData} from "../service/CustomerSQLDB"
 
@@ -21,12 +23,14 @@ let DATA = [
   
   ];
 
+
 const numColumns=2
 const WIDTH=Dimensions.get('window').width
 
 
 
-const CustomerApp = () => {
+const CustomerApp = ({navigation}) => {
+  
     
   FormData=(DATA,numColumns)=>{
     const totalRows =Math.floor(DATA.length/numColumns)
@@ -54,9 +58,22 @@ const CustomerApp = () => {
       </View>
     )
   }
+  const _goBack = () => console.log('Went back');
+
+  const _handleSearch = () => console.log('Searching');
+
+  const _handleMore = () => console.log('Shown more');
+
   let {container,itemText}=styles
-  return(
+  return(  
     <View style={container}>
+      <Appbar.Header>
+        <Appbar.BackAction onPress={_goBack} />
+        <Appbar.Content title="Home" subtitle="homePage" />
+        <Appbar.Action icon="search1" onPress={_handleSearch} />
+        <Appbar.Action icon="dots-three-vertical" onPress={_handleMore} />
+      </Appbar.Header>
+     
       <FlatList
       data={FormData(DATA,numColumns)}
       renderItem={_renderItems}
@@ -102,13 +119,21 @@ const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center"
   },
+  icon: {
+    paddingLeft: 10
+  },
+  iconContainer: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    width: 120
+  },
   item: {
     padding: 20,
     marginVertical: 5,
     marginHorizontal: 5,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
   },
   email: {
     fontSize: 20,
