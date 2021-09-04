@@ -1,37 +1,14 @@
 
 import React, { useEffect, useState} from "react";
 import { Image,FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View,Button, Dimensions } from "react-native";
-//mport { RadioButton } from 'react-native-paper';
 import { Appbar } from 'react-native-paper';
-import { Icon } from "react-native-elements";
+import {addCustomer,deleteCustomer,getCustomers,updateAsyncData} from "../Services/BookData"
 
-//import {addCustomer,deleteCustomer,getCustomers,updateAsyncData} from "../service/CustomerSQLDB"
-
-
-let DATA = [
-
-  {id:'1', "title":"That's not my bunny", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9780746066928_cover_image.jpg"},
-  
-  {id:'2', "title":"Spanish for Beginners", "author":"Taks", "publisher":"Mara House", "isbn":"73fs4222", "year":1978, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781409509202_cover_image.jpg"},
-  
-  {id:'3', "title":"Fat Cat on Mat", "author":"Mat", "publisher":"Indus House", "isbn":"746fs4222", "year":1999, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781409509233_cover_image.jpg"},
-  {id:'20',"title":"First Colouring", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781474985420_cover_image.jpg"},
-  {id:'21',"title":"Ready for Writing", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781474986694_cover_image.jpg"},
-  {id:'22',"title":"corona virus", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781474991513_cover_image.jpg"}
-
-  
-  
-  ];
-
-
+let DATA= getCustomers();
 const numColumns=2
 const WIDTH=Dimensions.get('window').width
 
-
-
-const CustomerApp = ({navigation}) => {
-  
-    
+const CustomerApp = ({navigation}) => { 
   FormData=(DATA,numColumns)=>{
     const totalRows =Math.floor(DATA.length/numColumns)
     let totalLastRow=DATA.length-(totalRows*numColumns)
@@ -59,9 +36,7 @@ const CustomerApp = ({navigation}) => {
     )
   }
   const _goBack = () => console.log('Went back');
-
   const _handleSearch = () => console.log('Searching');
-
   const _handleMore = () => console.log('Shown more');
 
   let {container,itemText}=styles
@@ -69,9 +44,10 @@ const CustomerApp = ({navigation}) => {
     <View style={container}>
       <Appbar.Header>
         <Appbar.BackAction onPress={_goBack} />
-        <Appbar.Content title="Home" subtitle="homePage" />
-        <Appbar.Action icon="search1" onPress={_handleSearch} />
-        <Appbar.Action icon="dots-three-vertical" onPress={_handleMore} />
+        <Appbar.Content title="Home" subtitle="HomePage" />
+        <Appbar.Action icon="bell" onPress={_handleSearch} />
+        <Appbar.Action icon="share-variant" onPress={_handleMore} />
+        <Appbar.Action icon="magnify" onPress={_handleMore} />
       </Appbar.Header>
      
       <FlatList
@@ -82,9 +58,7 @@ const CustomerApp = ({navigation}) => {
       />
     </View>
   )
-  
-
-};
+  };
 
 
 const styles = StyleSheet.create({
