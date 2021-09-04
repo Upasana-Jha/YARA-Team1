@@ -4,7 +4,9 @@ import { Image,FlatList,
    StyleSheet, Text, TouchableOpacity, 
    TouchableHighlight,Alert,
    View } from "react-native";
-
+import { Appbar } from "react-native-paper";
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import Icon1 from 'react-native-vector-icons/Entypo';
 
 import { useNavigation } from '@react-navigation/native';
 import orderplaced from "./OrderPlaced";
@@ -158,15 +160,12 @@ const CartPage =  () => {
     });
     return unsubscribe;
   },[navigation]);
-
-
   ondelete=async(item)=>{
    
       console.log("del"+item.id)
       let id=item.id;
       await deleteCustomer(id)
       reloadCustomer();
-
   }
    */
   
@@ -188,11 +187,23 @@ console.log("DATA: "+DATA)
     );
   };
  
- 
+  const _goBack = () => console.log('Went back');
+
+  const _handleSearch = () => console.log('Searching');
+
+  const _handleMore = () => console.log('Shown more');
+
 
   return (
     <View style={styles.maincontainer}>
-    
+     <Appbar.Header>
+        <Appbar.BackAction   onPress={() => navigation.openDrawer()} />
+        <Appbar.Content title="Cart" subtitle="" titleStyle={{fontSize:20,fontFamily:"Montserrat-Regular"}} />
+        <Appbar.Action icon="bell" onPress={_handleMore} />
+        <Appbar.Action icon="share-variant" onPress={_handleSearch} />
+        <Appbar.Action icon="magnify"  onPress={_handleSearch} />
+
+      </Appbar.Header>
           <FlatList
           
         data={DATA}
@@ -207,15 +218,21 @@ console.log("DATA: "+DATA)
       </Text>
       <Text style={styles.forTotal1}>$24.00</Text>
       <Text style={styles.forTotal2}>Free Domestic Shipping</Text>
-      <Image 
-                 source={require('../components/Tag.png')}
+      <View style={{flex:1,flexDirection:'row',marginStart:20}}>
+      <Icon1
+                size={25}
+                style={{flex:1,color:'#6200ee'}}
+                name={'price-tag'}></Icon1>
+      {/*<Image 
+                // source={require('../components/Tag.png')}
                  style={styles.tinyLogo}
-                />
+      />*/}
       <Text style={[styles.forpromocode,styles.setcolour]}>Add Promo Code</Text>
-      <Image 
-                 source={require('../components/arrow.png')}
+      </View>
+      {/*<Image 
+                // source={require('../components/arrow.png')}
                  style={styles.tinyLogoforarrow}
-                />
+                />*/}
       </View>
   );
 };
@@ -312,6 +329,7 @@ forTotal2:{
 },
 forpromocode:{
     position: 'absolute',
+    flex:1,
     bottom:170,
     left:10,
     fontSize: 20,
