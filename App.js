@@ -8,7 +8,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import Home from './pages/FirstPage';
+import Home from './pages/HomePage';
+import CustomerApp from './pages/Book_Details';
+import Login from './pages/Login';
+import CartPage from './pages/CartPage';
+import OrderPlaced from './pages/OrderPlaced';
 
 
 // Import Custom Sidebar
@@ -31,9 +35,9 @@ const NavigationDrawerStructure = (props) => {
         <Image
           source={{
             uri:
-              'https://thumbs.dreamstime.com/z/default-avatar-profile-flat-icon-vector-contact-symbol-illustration-184752213.jpg',
+            'https://cdn.w600.comps.canstockphoto.com/three-lines-blue-circle-icon-clip-art-vector_csp50754261.jpg',
           }}
-          style={{width: 25, height: 25, marginLeft: 5}}
+          style={styles.tinyLogo}
         />
       </TouchableOpacity>
     </View>
@@ -43,27 +47,18 @@ const NavigationDrawerStructure = (props) => {
 function firstScreenStack({navigation}) {
 
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{
-          title: 'Home', //Set Header Title
-          headerLeft: () => (
-            <NavigationDrawerStructure
-              navigationProps={navigation}
-            />
-          ),
-          headerStyle: {
-            backgroundColor: '#f4511e', //Set Header color
-          },
-          headerTintColor: '#fff', //Set Header text color
-          headerTitleStyle: {
-            fontWeight: 'bold', //Set Header text style
-          },
-        }}
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home}
+         
       />
     </Stack.Navigator>
+  );
+}
+function NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
   );
 }
 const styles = StyleSheet.create({
@@ -80,10 +75,12 @@ const styles = StyleSheet.create({
 function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
+
+        <Drawer.Navigator
         drawerContentOptions={{activeTintColor: '#e91e63',itemStyle: {marginVertical: 5},}}
         drawerContent={(props) => <CustomSidebarMenu {...props} />}>
-        <Drawer.Screen name="Home" options={{drawerLabel: 'Home',
+        <Drawer.Screen name="Home" 
+        options={{drawerLabel: 'Home',      /// tiny icon home
        drawerIcon: ({ focused, size }) => (
         <Image
         source={{
@@ -93,7 +90,44 @@ function App() {
           style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
         />),}} 
         component={firstScreenStack} />
+
+        
+       
+        <Drawer.Screen name="BookDetails" 
+        options={{drawerLabel: 'Book Details',      /// tiny icon home
+        drawerIcon: ({ focused, size }) => (
+         <Image
+         source={{
+           uri:
+           'https://icon-library.com/images/more-details-icon/more-details-icon-7.jpg',
+         }}
+           style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
+         />),}} 
+        component={CustomerApp} />
+        <Drawer.Screen name="Cart"  options={{drawerLabel: 'Cart', 
+        drawerIcon: ({ focused, size }) => (
+          <Image
+          source={{
+            uri:
+            'https://www.nicepng.com/png/full/829-8298681_free-png-download-shopping-cart-clipart-png-photo.png',
+          }}
+            style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
+          />),}} 
+          component={CartPage} />
+        <Drawer.Screen name="Orders"  options={{drawerLabel: 'Orders', 
+        drawerIcon: ({ focused, size }) => (
+          <Image
+          source={{
+            uri:
+            'https://image.shutterstock.com/image-vector/logistics-package-vector-icon-600w-1298913529.jpg',
+          }}
+            style={[focused ? styles.drawerActive : styles.drawerInActive, { height: size, width: size }]}
+          />),}} 
+        component={OrderPlaced} />
+
+        <Drawer.Screen name="LOGOUT" component={Login} />
       </Drawer.Navigator>
+      
     </NavigationContainer>
   );
 }
