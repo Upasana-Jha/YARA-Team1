@@ -36,12 +36,20 @@ function App() {
     <NavigationContainer>
         
         <Drawer.Navigator
+        initialRouteName="LOGOUT"
         
-        screenOptions={{activeTintColor: '#e91e63',itemStyle: {marginVertical: 5},}}
-        drawerContent={(props) => <CustomSidebarMenu {...props} />}>
-      
-        <Drawer.Screen name="Home" 
-            options={{drawerLabel: 'Home', headerTitle:"Home", headerShown:false,  /// tiny icon home
+        screenOptions={{ activeTintColor: '#6200ee',itemStyle: {marginVertical: 1 , fontFamily:'Montserrat-Regular'},}}
+        drawerContent={(props) => <CustomSidebarMenu {...props} 
+         />}>
+       
+        <Drawer.Screen name="HomePage" 
+        
+            options={{drawerLabel: 'Home',headerTitle:"Home", headerShown:false,
+            labelStyle: {
+                  fontFamily: 'Montserrat-Bold',
+                  },
+   
+          /// tiny icon home
             drawerIcon: ({ focused, size }) => 
 
               <Icon
@@ -51,17 +59,18 @@ function App() {
         component={Home} header={false} />
        
         <Drawer.Screen name="BookDetails"
-        options={{drawerLabel: 'Book Details',    headerShown:false,   /// tiny icon home
+        options={{drawerLabel: 'Book Details', labelStyle:{fontFamily:'Montserrat-Bold',fontWeight: 'normal'}
+        ,   headerShown:false,   /// tiny icon home
         drawerIcon: ({ focused, size }) =>  <Icon
         size={23}
         name={'newspaper-outline'}></Icon>,}} 
         component={CustomerApp} />
-        <Drawer.Screen name="Cart"  options={{drawerLabel: 'Cart', headerShown:false,
+        <Drawer.Screen name="CartPage"  options={{drawerLabel: 'Cart',  headerShown:false,
         drawerIcon: ({ focused, size }) =>  <Icon
         size={23}
         name={'cart-outline'}></Icon>,}} 
           component={CartPage} />
-        <Drawer.Screen name="Orders"  options={{drawerLabel: 'Orders', headerShown:false,
+        <Drawer.Screen name="OrderPlaced"  options={{drawerLabel: 'Orders', headerShown:false,
         drawerIcon: ({ focused, size }) =>  <Icon1
         size={23}
         name={'shopping-outline'}></Icon1>,}} 
