@@ -1,56 +1,42 @@
 import React, { useState , useEffect} from "react";
-import { Image,FlatList,
-  SafeAreaView, StatusBar, Button,
+import { Image,FlatList, StatusBar,
    StyleSheet, Text, TouchableOpacity, 
    TouchableHighlight,Alert,
    View } from "react-native";
-
-
 import { useNavigation } from '@react-navigation/native';
-import orderplaced from "./OrderPlaced";
 import Icon1 from 'react-native-vector-icons/Entypo';
-import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Appbar } from "react-native-paper";
 import Icon3 from 'react-native-vector-icons/AntDesign';
+import { delBookFromCart, getCartBooks } from "../service/BookData";
 
-let DATA = [
-    {id:'1', "title":"Thats not my bunny", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9780746066928_cover_image.jpg"},
-    {id:'2', "title":"Spanish-Beginners", "author":"Taks", "publisher":"Mara House", "isbn":"73fs4222", "year":1978, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781409509202_cover_image.jpg"},
-    //{id:'2', "title":"Spanish-Beginners", "author":"Taks", "publisher":"Mara House", "isbn":"73fs4222", "year":1978, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781409509202_cover_image.jpg"},
-    
 
-];
-const showAlert = () =>{
+const showAlert = (item) =>{
   Alert.alert(
     "Are you sure ",
     "You want to delete item from cart?",
     
     [{text: "Cancel",style: "cancel", },
-      {text: "OK",style: "ok",},
+      {text: "OK",style: "ok",onPress:()=>ondelete(item)},
     ],
     {cancelable: true,}
   );
 }
   
-  const placeorder=(navigation)=>{
-    //
+const placeorder=(navigation)=>{
   Alert.alert(
     "Are you sure ",
-    "You want to Place order",
-    
+    "You want to Place order",   
     [
         {text: 'Yes', onPress: () => navigation.navigate('OrderPlaced')},
         {text: 'No', onPress: () => console.log('No button clicked'), style: 'cancel'},
       ],
     {
-      cancelable: true,
-      
+      cancelable: true,  
     }
   );
 }
 
-
-const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
+const Item = ({ item,  onPress,onDelete, onEdit,style }) => (
 
   <TouchableOpacity onPress={onPress} style={[styles.item, style]}>
         <View style={{
@@ -73,11 +59,6 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
               <Text style={styles.title}></Text>
               <Text style={[styles.setcolour1]}> $15 </Text>
               <Text style={styles.title}></Text>
-
-              
-
-       
-        
         <View style={{
             flex: 1,
             flexDirection: 'row', }}>
@@ -95,7 +76,7 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
                 
                 borderRadius:20,
                 marginTop:12,}} 
-                onPress={showAlert}>
+                onPress={onDelete}>
                   {/*<Text style={styles.plusminusicon}>-</Text>*/}
                   <Icon1
                 size={18}
@@ -155,8 +136,32 @@ const CartPage =  () => {
   const [customers, setCustomers] = useState([]);
   const navigation = useNavigation();
  
-  
-console.log("DATA: "+DATA)
+
+  reloadCustomer = ()=>{
+    let booklist=  getCartBooks();
+    console.log("after get customers"+JSON.stringify(booklist))
+    setCustomers(booklist);
+    doRender(count+1)
+    
+  }
+  useEffect(()=>{
+    const unsubscribe = navigation.addListener('focus', () => {
+      reloadCustomer();
+      
+    });
+    return unsubscribe;
+  },[navigation]);
+
+  ondelete=(item)=>{
+   
+    console.log("del"+item.id)
+    let id=item.id;
+     delBookFromCart(item);
+    reloadCustomer();
+
+}
+
+
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "#ffffff" :"#ffffff";
     return (
@@ -167,7 +172,7 @@ console.log("DATA: "+DATA)
           console.log("user pressed edit button. Everything is :"+JSON.stringify(item));
           navigation.navigate('EditCustomer',item);
           }}
-        onDelete={()=>{ondelete(item)
+        onDelete={()=>{showAlert(item)
         }}
         style={{ backgroundColor }}
       />
@@ -191,7 +196,7 @@ console.log("DATA: "+DATA)
      </Appbar.Header>
           <FlatList
           
-        data={DATA}
+        data={customers}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         extraData={selectedId}
