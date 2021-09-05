@@ -4,16 +4,19 @@ import { Image,FlatList,
    StyleSheet, Text, TouchableOpacity, 
    TouchableHighlight,Alert,
    View } from "react-native";
-import { Appbar } from "react-native-paper";
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import Icon1 from 'react-native-vector-icons/Entypo';
+
 
 import { useNavigation } from '@react-navigation/native';
 import orderplaced from "./OrderPlaced";
+import Icon1 from 'react-native-vector-icons/Entypo';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Appbar } from "react-native-paper";
+import Icon3 from 'react-native-vector-icons/AntDesign';
 
 let DATA = [
     {id:'1', "title":"Thats not my bunny", "author":"Tulsidas", "publisher":"Indus House", "isbn":"746fs4222", "year":1983, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9780746066928_cover_image.jpg"},
     {id:'2', "title":"Spanish-Beginners", "author":"Taks", "publisher":"Mara House", "isbn":"73fs4222", "year":1978, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781409509202_cover_image.jpg"},
+    //{id:'2', "title":"Spanish-Beginners", "author":"Taks", "publisher":"Mara House", "isbn":"73fs4222", "year":1978, "cover":"//training.pyther.com/yara/15-day/03-BookStore/books/9781409509202_cover_image.jpg"},
     
 
 ];
@@ -36,7 +39,7 @@ const showAlert = () =>{
     "You want to Place order",
     
     [
-        {text: 'Yes', onPress: () => navigation.navigate('orderplaced')},
+        {text: 'Yes', onPress: () => navigation.navigate('OrderPlaced')},
         {text: 'No', onPress: () => console.log('No button clicked'), style: 'cancel'},
       ],
     {
@@ -66,8 +69,6 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
                
                 <View style={{flex:2,  height: 90}} >
                 <Text style={[styles.title]}>{item.title}</Text>
-                
-
               <Text style={styles.details}>By : {item.author}</Text>
               <Text style={styles.title}></Text>
               <Text style={[styles.setcolour1]}> $15 </Text>
@@ -109,7 +110,7 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
                 marginTop:10,}}  
                 onPress={()=>{}}>
 
-                <Text style={{fontSize:25}}>1</Text>
+                <Text style={{fontSize:18,marginTop:5,color:'#585858'}}>1</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -145,29 +146,7 @@ const CartPage =  () => {
   const [count, doRender] = useState(0);
   const [customers, setCustomers] = useState([]);
   const navigation = useNavigation();
- /*
- reloadCustomer = async()=>{
-    let customerlist= DATA;
-    console.log("after get customers"+JSON.stringify(customerlist))
-    setCustomers(customerlist);
-    doRender(count+1)
-  }
  
-  useEffect(()=>{
-    const unsubscribe = navigation.addListener('focus', () => {
-      reloadCustomer();
-      
-    });
-    return unsubscribe;
-  },[navigation]);
-  ondelete=async(item)=>{
-   
-      console.log("del"+item.id)
-      let id=item.id;
-      await deleteCustomer(id)
-      reloadCustomer();
-  }
-   */
   
 console.log("DATA: "+DATA)
   const renderItem = ({ item }) => {
@@ -193,17 +172,15 @@ console.log("DATA: "+DATA)
 
   const _handleMore = () => console.log('Shown more');
 
-
   return (
     <View style={styles.maincontainer}>
-     <Appbar.Header>
+      <Appbar.Header>
         <Appbar.Action icon="menu"   onPress={() => navigation.openDrawer()} />
         <Appbar.Content title="Cart" subtitle="" titleStyle={{fontSize:20,fontFamily:"Montserrat-Regular"}} />
         <Appbar.Action icon="bell" onPress={_handleMore} />
         <Appbar.Action icon="share-variant" onPress={_handleSearch} />
         <Appbar.Action icon="magnify"  onPress={_handleSearch} />
-
-      </Appbar.Header>
+     </Appbar.Header>
           <FlatList
           
         data={DATA}
@@ -211,28 +188,35 @@ console.log("DATA: "+DATA)
         keyExtractor={(item) => item.id}
         extraData={selectedId}
       />
+      <TouchableOpacity>
       <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.submitButton]} onPress ={()=> placeorder(navigation)}>
                     <Text style={styles.loginText}>PLACE ORDER</Text>
                 </TouchableHighlight>
+                <Icon2
+                size={31}
+                //style={{flex:1,color:'#6200ee'}}
+                style={styles.submitButton1}
+                name={'arrow-right-drop-circle'}></Icon2>
+                
       <Text style={styles.forTotal}>TOTAL
       </Text>
       <Text style={styles.forTotal1}>$24.00</Text>
       <Text style={styles.forTotal2}>Free Domestic Shipping</Text>
-      <View style={{flex:1,flexDirection:'row',marginStart:20}}>
+      
       <Icon1
                 size={25}
-                style={{flex:1,color:'#6200ee'}}
+                style={{color:'#6200ee',bottom:173,left:20}}
                 name={'price-tag'}></Icon1>
-      {/*<Image 
-                // source={require('../components/Tag.png')}
-                 style={styles.tinyLogo}
-      />*/}
-      <Text style={[styles.forpromocode,styles.setcolour]}>Add Promo Code</Text>
-      </View>
-      {/*<Image 
-                // source={require('../components/arrow.png')}
-                 style={styles.tinyLogoforarrow}
-                />*/}
+      <Text style={[styles.forpromocode]}>Add Promo Code</Text>
+
+    
+      <Icon3
+                size={20}
+                //style={{flex:1,color:'#6200ee'}}
+                style={styles.tinyLogoforarrow}
+                name={'rightcircleo'}></Icon3>
+                </TouchableOpacity>
+
       </View>
   );
 };
@@ -250,7 +234,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     height: 30,
-    width:140,
+    width:180,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -269,7 +253,8 @@ loginButton: {
 
 loginText: {
     color: 'white',
-    fontWeight:"800"
+    fontWeight:"800",
+    marginRight:23,
 },
   item: {
     padding: 0,
@@ -278,17 +263,21 @@ loginText: {
    
   },
   title: {
-    fontSize: 20,
-    //fontFamily:'Montserrat-Regular',
-    marginLeft:30
+    fontSize: 18,
+    fontFamily:'Montserrat-Light',
+    marginLeft:30,
+    top:17,
+    marginTop:10,
+    fontWeight:'300'
     
     
 
   },
   details: {
-    fontSize: 20,
-    marginLeft:30
-    //fontFamily:'Montserrat-ExtraLight',
+    fontSize: 18,
+    marginLeft:30,
+    top:17,
+    fontFamily:'Montserrat-ExtraLight',
     
   },
   
@@ -307,42 +296,55 @@ loginText: {
     position: 'absolute',
     height: 45,
     bottom:10,
-    left:230,
+    left:200,
+},
+submitButton1: {
+  position: 'absolute',
+  height: 40,
+  bottom:24,
+  left:340,
+  
+  color:'white',
 },
 forTotal:{
     position: 'absolute',
     bottom:80,
-    left:10,
-    fontSize: 20,
+    left:20,
+    fontSize: 12,
+    fontFamily:'Montserrat-Light'
 },
 forTotal1:{
     position: 'absolute',
     bottom:50,
-    left:10,
-    fontSize: 20,
+    left:20,
+    fontSize: 22,
+    color:'#585858',
+    fontFamily:'Montserrat-Bold'
 },
 forTotal2:{
     position: 'absolute',
-    bottom:25,
-    left:12,
-    fontSize: 15,
+    bottom:32,
+    left:20,
+    fontSize: 12,
+    fontWeight:'400',
+    color:'#585858',
+    fontFamily:'Montserrat-Light'
+
 },
 forpromocode:{
     position: 'absolute',
-    flex:1,
-    bottom:170,
-    left:10,
-    fontSize: 20,
-    marginLeft:40
-    
-    
-},
-setcolour:{
+    bottom:174,
+    left:20,
+    fontSize: 16,
+    marginLeft:40,
     color:"#6200ee",
+    fontFamily:'Montserrat-Regular',
+    fontWeight:'400'   
 },
 setcolour1:{
     color:'#e75480',
-    marginLeft:30
+    marginLeft:30,
+    top:7,
 },
 image:{
   width:120,
@@ -353,8 +355,25 @@ image:{
   borderWidth:1,
   backgroundColor:'#ffffff',
   //backgroundColor:'#D3D3D3',
-  shadowOpacity:0.1,
-  shadowRadius:15
+  //shadowOpacity:0.1,
+  //shadowRadius:15,
+  shadowOffset:{
+    width:-15,
+    height:-15
+    },
+    shadowOpacity:0.5,
+    shadowRadius:1,
+    shadowColor:"#ffffff",
+    marginTop: 20,
+    shadowOffset:{
+    width:5,
+    height:5
+    },
+    shadowOpacity:0.5,
+    shadowRadius:6,
+    shadowColor:"#b7c4dd",
+    marginTop: 20
+  
 },
 fortitle:{
   marginLeft:10,
@@ -364,26 +383,20 @@ tinyLogo: {
   height: 30,
   position: 'absolute',
   bottom:168,
-
 },
 tinyLogoforarrow: {
   width: 60,
   height: 30,
   position: 'absolute',
-  bottom:168,
-  marginLeft:320,
-
+  bottom:160,
+  marginLeft:340,
+  color:"gray"
 },
 plusminusicon: {
   color: 'gray',
   fontSize:20,
-  
   fontWeight:"800",
- 
- 
-},
-
-  
+}, 
 });
 
 
