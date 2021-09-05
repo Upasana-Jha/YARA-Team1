@@ -10,13 +10,8 @@ import {
     Alert
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/core';
-//import { getUsersByEmail, addUsers } from '../services/Users';
-//import { NavigationContainer } from '@react-navigation/native';
-//import { createStackNavigator } from '@react-navigation/stack';
 
 export default class Signup extends Component {
-
     constructor(props) {
         super(props)
     }
@@ -26,15 +21,15 @@ export default class Signup extends Component {
         email: '',
         password: ''
     }
-    
+
     onSignin = () => {
-        
-        this.props.navigation.navigate('Signin', {});
+        this.props.navigation.navigate('SignIn', {});
     }
     
-Continue = () => {
-    this.props.navigation.navigate('CartPage',{})
-}
+    Continue = () => {
+        this.props.navigation.navigate('HomePage',{})
+    }
+    
     render() {
         return (
             <View style={styles.container}>
@@ -42,12 +37,12 @@ Continue = () => {
                     <TouchableOpacity style={[ styles.loginButton2 ]} onPress={() => this.onSignin()}>
                         <Text style={[styles.login],[styles.setcolor]}>SIGN IN</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[ styles.loginButton1 ]}>
+                    <TouchableOpacity style={[ styles.loginButton1 ,{marginLeft:25}]}>
                         <Text style={[styles.login]}>SIGN UP</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.inputContainer}>
-                    <TextInput style={styles.inputs}
+                    <TextInput style={[styles.inputs]}
                         placeholder="Name"
                         keyboardType="email-address"
                         value={this.state.name}
@@ -93,12 +88,13 @@ Continue = () => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 40,
+        marginTop: 80,
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
     continue: {
         marginTop: 200,
+        
     },
     inputContainer: {
         width: 350,
@@ -108,21 +104,17 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     inputs: {
-        marginTop: 29,
+        marginTop:80,
         height: 45,
         borderBottomColor: 'grey',
         borderBottomWidth: 1,
         flex: 1,
         color: 'black',
-        fontSize: 20,
+        fontSize: 18,
+        fontFamily:'Montserrat-Regular',
+        fontWeight:'400'
     },
-    continueContainer: {
-        height: 50,
-        width: 250,
-        borderRadius: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+   
     inputIcon: {
         width: 30,
         height: 30,
@@ -141,41 +133,45 @@ const styles = StyleSheet.create({
     loginButton1: {
         backgroundColor: "#6200EE",
         borderRadius: 60,
-        padding: 15,
-        paddingLeft: 20,
-        paddingRight: 20,
-        marginLeft: 25,
+        height:35,
+        width:85,
+        marginRight: 25,
+        alignItems:'center',
+        justifyContent:'center',
         fontFamily:'Montserrat-Bold',
     },
     loginButton2: {
         borderRadius: 60,
-        padding: 15,
-        paddingLeft: 20,
-        paddingRight: 20,
-        marginRight: 25,
+        
+        height:35,
+        width:85,
+       
     },
     login: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '600',
         fontFamily:'Montserrat-Bold',
     },
     loginText: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 15,
         fontWeight: '600',
         fontFamily:'Montserrat-Bold',
     },
     forgotPassword:{
         padding: 40,
-        fontSize: 15,
+        fontSize: 14,
         color: "#6200EE",
-        fontFamily:'Montserrat-Bold',
+        fontFamily:'Montserrat-SemiBold',
     },
     setcolor:{
         color:'#B2BEB5',
-        fontSize:17,
-        fontFamily:'Montserrat-Bold',
+        fontSize:14,
+        marginTop:8,
+        marginLeft:18,
+        fontFamily:'Montserrat-Regular',
+        fontWeight:'500'
     },
     loginButton:{
         width:380,
