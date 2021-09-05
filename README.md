@@ -26,24 +26,24 @@ Team Members -
    - Update key and values as array in "info.plist" file in current BookStore Xcode folder
    -  key : <key>UIAppFonts</key>
    -  array of Strings:
-   -  <array>
-   - <string>AntDesign.ttf</string>
-   - <string>Entypo.ttf</string>
-   - <string>EvilIcons.ttf</string>
-   - <string>Feather.ttf</string>
-   - <string>FontAwesome.ttf</string>
-   - <string>FontAwesome5_Brands.ttf</string>
-   - <string>FontAwesome5_Regular.ttf</string>
-   - <string>FontAwesome5_Solid.ttf</string>
-   - <string>Foundation.ttf</string>
-   - <string>Ionicons.ttf</string>
-   - <string>MaterialIcons.ttf</string>
+    -  <array>
+    - <string>AntDesign.ttf</string>
+    - <string>Entypo.ttf</string>
+    - <string>EvilIcons.ttf</string>
+    - <string>Feather.ttf</string>
+    - <string>FontAwesome.ttf</string>
+    - <string>FontAwesome5_Brands.ttf</string>
+    - <string>FontAwesome5_Regular.ttf</string>
+    - <string>FontAwesome5_Solid.ttf</string>
+    - <string>Foundation.ttf</string>
+    - <string>Ionicons.ttf</string>
+    - <string>MaterialIcons.ttf</string>
     - <string>MaterialDesignIcons.ttf</string>
-   - <string>MaterialCommunityIcons.ttf</string>
-   - <string>SimpleLineIcons.ttf</string>
-   - <string>Octicons.ttf</string>
-   - <string>Zocial.ttf</string>
-   - </array>
+    - <string>MaterialCommunityIcons.ttf</string>
+    - <string>SimpleLineIcons.ttf</string>
+    - <string>Octicons.ttf</string>
+    - <string>Zocial.ttf</string>
+    - </array>
   - In terminal (in BookStoreApp) , run the following command
          {react-native run-ios}
          
