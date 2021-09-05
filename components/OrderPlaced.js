@@ -37,7 +37,7 @@ export default function orderplaced(){
         <Icon4
                   size={40}
                   style={{color:'#6200ee',bottom:370,left:340}}
-                  name={'close-outline'}
+                  name={'close-outline'} onPress={() => placeorder(navigation)}
                   ></Icon4>
          
     
