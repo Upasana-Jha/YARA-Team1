@@ -29,11 +29,11 @@ export default class Signin extends Component {
     
 
     onLoginButton = () => {   
-            this.props.navigation.navigate('CartPage', {});           
+            this.props.navigation.navigate('HomePage', {});           
     }
     
     onSignup = () => {
-        this.props.navigation.navigate('Sign Up', {});
+        this.props.navigation.navigate('SignUp', {});
     }
 
     render() {
@@ -44,10 +44,10 @@ export default class Signin extends Component {
                         <Text style={[styles.login]}>SIGN IN</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={[ styles.loginButton2 ]} onPress={() => this.onSignup()} >
-                        <Text style={[styles.login],[styles.setcolor]}>SIGN UP</Text>
+                        <Text style={[[styles.login],[styles.setcolor],{marginStart:10}]}>SIGN UP</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.inputContainer}>
+                <View style={[styles.inputContainer,{marginTop:25}]}>
                     <TextInput style={styles.inputs}
                         placeholder="Email"
                         keyboardType="email-address"
@@ -56,7 +56,7 @@ export default class Signin extends Component {
                         onChangeText={(email) => this.setState({ email })} />
                 </View>
 
-                <View style={styles.inputContainer}>
+                <View style={[styles.inputContainer,{marginTop:20}]}>
                     <TextInput style={styles.inputs}
                         placeholder="Password"
                         secureTextEntry={true}
@@ -81,7 +81,7 @@ export default class Signin extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 40,
+        marginTop: 80,
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
@@ -103,15 +103,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         flex: 1,
         color: 'black',
-        fontSize: 20,
+        fontSize: 18,
+        fontFamily:'Montserrat-Regular',
+        fontWeight:'400'
     },
-    continueContainer: {
-        height: 50,
-        width: 250,
-        borderRadius: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+   
     inputIcon: {
         width: 30,
         height: 30,
@@ -130,41 +126,45 @@ const styles = StyleSheet.create({
     loginButton1: {
         backgroundColor: "#6200EE",
         borderRadius: 60,
-        padding: 15,
-        paddingLeft: 20,
-        paddingRight: 20,
+        height:35,
+        width:85,
         marginRight: 25,
+        alignItems:'center',
+        justifyContent:'center',
         fontFamily:'Montserrat-Bold',
     },
     loginButton2: {
         borderRadius: 60,
-        padding: 15,
-        paddingLeft: 20,
-        paddingRight: 20,
-        marginLeft: 25,
+        
+        height:35,
+        width:85,
+       
     },
     login: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '600',
         fontFamily:'Montserrat-Bold',
     },
     loginText: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 15,
         fontWeight: '600',
         fontFamily:'Montserrat-Bold',
     },
     forgotPassword:{
         padding: 40,
-        fontSize: 15,
+        fontSize: 14,
         color: "#6200EE",
-        fontFamily:'Montserrat-Bold',
+        fontFamily:'Montserrat-SemiBold',
     },
     setcolor:{
         color:'#B2BEB5',
-        fontSize:17,
-        fontFamily:'Montserrat-Bold',
+        fontSize:14,
+        marginTop:8,
+        marginLeft:18,
+        fontFamily:'Montserrat-Regular',
+        fontWeight:'500'
     },
     loginButton:{
         width:380,
