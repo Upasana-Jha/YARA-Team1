@@ -38,6 +38,7 @@ Team Members -
    - <string>Foundation.ttf</string>
    - <string>Ionicons.ttf</string>
    - <string>MaterialIcons.ttf</string>
+    - <string>MaterialDesignIcons.ttf</string>
    - <string>MaterialCommunityIcons.ttf</string>
    - <string>SimpleLineIcons.ttf</string>
    - <string>Octicons.ttf</string>
