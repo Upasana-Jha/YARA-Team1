@@ -11,6 +11,8 @@ import CartPage from './components/CartPage';
 import OrderPlaced from './components/OrderPlaced';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 // Import Custom Sidebar
 import CustomSidebarMenu from './CustomSideBarMenu';
@@ -65,7 +67,18 @@ function App() {
         name={'shopping-outline'}></Icon1>,}} 
         component={OrderPlaced} />
 
-        <Drawer.Screen name="LOGOUT"  component={Login} />
+        <Drawer.Screen name="LOGOUT" options={{headerShown:false}} component={Login} />
+        <Drawer.Screen name="SignIn" options={{headerShown:false,
+                drawerLabel: () => null,
+                title: null,
+                drawerIcon: () => null
+            }} component={SignIn} />
+        <Drawer.Screen name="SignUp" options={{headerShown:false,
+                drawerLabel: () => null,
+                title: null,
+                drawerIcon: () => null
+            }} component={SignUp} />
+          
       </Drawer.Navigator>
     </NavigationContainer>
   );
