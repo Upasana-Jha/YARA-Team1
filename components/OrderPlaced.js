@@ -2,45 +2,51 @@ import React, { useState } from "react";
 import { Image,FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View ,Button, TouchableHighlight} from "react-native";
 import { Router } from "express";
 import { useNavigation } from '@react-navigation/native';
-import { require } from "yargs";
+import Icon2 from 'react-native-vector-icons/AntDesign';
+import Icon1 from 'react-native-vector-icons/AntDesign';
+import Icon3 from 'react-native-vector-icons/Feather';
+import Icon4 from  'react-native-vector-icons/Ionicons';
+//import { require } from "yargs";
 
 export default function orderplaced(){
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
     const placeorder=(navigation)=>{
         navigation.navigate('CartPage')
       
     }
 
-
     return(
 
     
     <TouchableOpacity >
       
-      <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-        
-        
-            <Image
-            style={styles.tinyLogo}
-            source={{
-              uri: "https://www.pikpng.com/pngl/m/6-63180_images-for-blue-tick-mark-png-facebook-page.png" ,
-            }}
-          />
-          
-         
-         
-      </View>
       
-      <Text style={styles.title}>Order Placed! </Text>
-      <Text style={styles.email}>Your order was placed successfully.</Text>
+          <Icon1
+          size={100}
+          style={{color:'#ffffff',borderColor:'#6200ee',top:148,justifyContent:'center',left:143}}
+          name={'checkcircle'}></Icon1>
+          <View style={styles.cirlce}/>
+          <Icon3
+          size={64}
+          style={{color:'#6200ee',borderColor:'#6200ee',top:68,justifyContent:'center',left:161}}
+          name={'check'}></Icon3>
+           
+        <Text style={styles.title}>Order Placed!</Text>
+        <Text style={styles.email}>Your order was placed successfully.</Text>
+        <Icon4
+                  size={40}
+                  style={{color:'#6200ee',bottom:370,left:340}}
+                  name={'close-outline'}
+                  ></Icon4>
+         
+    
+      
+      
       <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.submitButton]} onPress={() => placeorder(navigation)}>
                     <Text style={styles.loginText}> MY ORDERS</Text>
                 </TouchableHighlight>
+                
   </TouchableOpacity>
     )
 };
@@ -58,16 +64,16 @@ const styles = StyleSheet.create({
       
     },
     title: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        //justifyContent: 'center',
+        //alignItems: 'center',
       fontSize: 32,
       marginLeft:100,
-      marginTop:200,
+      marginTop:130,
     },
     email: {
       fontSize: 20,
       marginLeft:40,
-      marginTop:40,
+      marginTop:20,
     },
     phone: {
       fontSize: 16,
@@ -79,21 +85,21 @@ const styles = StyleSheet.create({
       fontSize: 14,
     },
     tinyLogo: {
-      width: 100,
-      height: 100,
-      marginTop:260,
-
+      width: 400,
+      height: 400,
+      marginTop:400,
+      marginLeft:20
     },
     buttonContainer: {
       height: 30,
-      width:140,
+      width:130,
       
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 0,
+      marginBottom: 5,
       
       borderRadius:50,
-      marginTop:0,
+      marginTop:90,
      
      
   },
@@ -106,12 +112,27 @@ const styles = StyleSheet.create({
     
     height: 45,
     bottom:0,
-    marginLeft:120,
-    marginTop:60,
+    marginLeft:130,
+    marginTop:20,
     
 },
+submitButton1: {
+    
+  height: 45,
+  bottom:0,
+  marginLeft:180,
+  //marginTop:400,
+  //color:'white',
+  marginBottom:0
+  
+
+  
+},
+
 loginText: {
   color: 'white',
-  fontWeight:"800"
+  fontWeight:"800",
+  
 },
+
   });
