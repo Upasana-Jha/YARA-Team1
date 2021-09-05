@@ -6,6 +6,7 @@ import Icon2 from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/AntDesign';
 import Icon3 from 'react-native-vector-icons/Feather';
 import Icon4 from  'react-native-vector-icons/Ionicons';
+import Icon5 from 'react-native-vector-icons/AntDesign';
 //import { require } from "yargs";
 
 export default function orderplaced(){
@@ -46,7 +47,10 @@ export default function orderplaced(){
       <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.submitButton]} onPress={() => placeorder(navigation)}>
                     <Text style={styles.loginText}> MY ORDERS</Text>
                 </TouchableHighlight>
-                
+                <Icon5
+                size={31}
+                style={styles.submitButton1}
+                name={'rightcircle'}></Icon5>
   </TouchableOpacity>
     )
 };
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
       height: 30,
-      width:130,
+      width:160,
       
       justifyContent: 'center',
       alignItems: 'center',
@@ -112,17 +116,17 @@ const styles = StyleSheet.create({
     
     height: 45,
     bottom:0,
-    marginLeft:130,
+    marginLeft:120,
     marginTop:20,
     
 },
 submitButton1: {
     
   height: 45,
-  bottom:0,
-  marginLeft:180,
+  bottom:43,
+  marginLeft:235,
   //marginTop:400,
-  //color:'white',
+  color: "white",
   marginBottom:0
   
 
@@ -132,6 +136,7 @@ submitButton1: {
 loginText: {
   color: 'white',
   fontWeight:"800",
+  right:20
   
 },
 
