@@ -24,7 +24,8 @@ Team Members -
 3. FOR ICONS -
    - yarn add react-native-vector-icons
    - Update key and values as array in "info.plist" file in current BookStore Xcode folder
-   - <key>UIAppFonts</key>
+   -  key : <key>UIAppFonts</key>
+   -  array of Strings:
    -  <array>
    - <string>AntDesign.ttf</string>
    - <string>Entypo.ttf</string>
