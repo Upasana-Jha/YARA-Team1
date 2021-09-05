@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -32,10 +31,12 @@ const CustomSidebarMenu = (props) => {
       <View style={{position: 'absolute', top:0, left: 0, right: 0, bottom: 640, justifyContent: 'center', alignItems: 'center'}}>
       <Text
         style={{
-          fontSize: 26,
-          color: 'black',
+          fontSize: 23,
+          color: '#585858',
           fontWeight: "bold",
+          marginLeft:0,
           paddingBottom:20,
+          fontFamily:'Montserrat-Bold'
         }}>Jane Doe</Text>
       </View>
      
@@ -79,7 +80,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: "bold",
     alignSelf: "center",
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    fontFamily:'Montserrat-Regular'
+
 },
 separator: {
   marginLeft:15,
@@ -88,27 +91,29 @@ separator: {
   borderBottomWidth: StyleSheet.hairlineWidth,
 },
 buttonContainer: {
-  height: 45,
+  height: 30,
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
   marginTop:20,
   marginBottom: 30,
   marginLeft:15,
-  width: 150,
+  width: 130,
   borderRadius: 30,
-  borderColor:'grey',
-  borderWidth:1,
+  borderColor:'gray',
+  color:'gray',
+  borderWidth:0.5,
  
 },
 loginButton: {
-  backgroundColor: "#fff",
+  backgroundColor: "#ffffff",
  
 },
 loginText: {
   color: '#000',
-  fontSize: 20,
+  fontSize: 15,
   alignSelf: "center",
+  fontFamily:'Montserrat-Regular'
   
 }
 });
