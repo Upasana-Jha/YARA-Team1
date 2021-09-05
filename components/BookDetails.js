@@ -5,7 +5,7 @@ import { Image,FlatList, Button,
    TouchableHighlight,Alert,
    View } from "react-native";
    import { Appbar } from 'react-native-paper';
-import { getBooks } from "../service/BookData";
+import { getBooks , addBookToCart} from "../service/BookData";
 import Menu from './Menu';
 
 const showAlert = (item) =>
@@ -17,6 +17,7 @@ const showAlert = (item) =>
       },
       {
         text: "OK", style: "ok",
+        onPress:()=>addBookToCart(item)
       },
     ]);
 
@@ -75,7 +76,7 @@ const BookDetails =  () => {
       <View style={{flex:1}}>
         
       <Appbar.Header>
-        <Appbar.BackAction   onPress={() => navigation.openDrawer()} />
+        <Appbar.Action icon="menu"  onPress={() => navigation.openDrawer()} />
         <Appbar.Content title="Books Details" subtitle="" titleStyle={{fontSize:20,fontFamily:"Montserrat-Regular"}} />
         <Appbar.Action icon="bell" onPress={_handleMore} />
         <Appbar.Action icon="share-variant" onPress={_handleSearch} />
