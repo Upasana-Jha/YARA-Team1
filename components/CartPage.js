@@ -197,7 +197,7 @@ console.log("DATA: "+DATA)
   return (
     <View style={styles.maincontainer}>
      <Appbar.Header>
-        <Appbar.BackAction   onPress={() => navigation.openDrawer()} />
+        <Appbar.Action icon="menu"   onPress={() => navigation.openDrawer()} />
         <Appbar.Content title="Cart" subtitle="" titleStyle={{fontSize:20,fontFamily:"Montserrat-Regular"}} />
         <Appbar.Action icon="bell" onPress={_handleMore} />
         <Appbar.Action icon="share-variant" onPress={_handleSearch} />
