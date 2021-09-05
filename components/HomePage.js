@@ -43,7 +43,7 @@ const CustomerApp = ({navigation}) => {
   return(  
     <View style={container}>
       <Appbar.Header>
-        <Appbar.Action icon="menu" onPress={_handleSearch} />
+        <Appbar.Action icon="menu" onPress={navigation.toggleDrawer} />
         <Appbar.Content title="Home" subtitle="HomePage" />
         <Appbar.Action icon="bell" onPress={_handleSearch} />
         <Appbar.Action icon="share-variant" onPress={_handleMore} />
