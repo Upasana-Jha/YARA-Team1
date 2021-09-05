@@ -96,7 +96,12 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
                 borderRadius:20,
                 marginTop:12,}} 
                 onPress={showAlert}>
-                <Text style={styles.plusminusicon}>-</Text>
+                  {/*<Text style={styles.plusminusicon}>-</Text>*/}
+                  <Icon1
+                size={18}
+                //style={{flex:1,color:'#6200ee'}}
+                //style={}
+                name={'minus'}></Icon1>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -122,7 +127,10 @@ const Item = ({ item, onAddCart,onMore, onPress,onDelete, onEdit,style }) => (
                 marginBottom: 20,
                 borderRadius: 60,
                 marginTop:12,}} >
-                <Text style={styles.plusminusicon}>+</Text>
+                  {/* <Text style={styles.plusminusicon}>+</Text>*/}
+                <Icon1
+                size={20}
+                name={'plus'}></Icon1>
             </TouchableHighlight>
             <TouchableHighlight
                 style={{backgroundColor: "#ffffff",
@@ -192,11 +200,11 @@ console.log("DATA: "+DATA)
       <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,styles.submitButton]} onPress ={()=> placeorder(navigation)}>
                     <Text style={styles.loginText}>PLACE ORDER</Text>
                 </TouchableHighlight>
-                <Icon2
+                <Icon3
                 size={31}
                 //style={{flex:1,color:'#6200ee'}}
                 style={styles.submitButton1}
-                name={'arrow-right-drop-circle'}></Icon2>
+                name={'rightcircle'}></Icon3>
                 
       <Text style={styles.forTotal}>TOTAL
       </Text>
