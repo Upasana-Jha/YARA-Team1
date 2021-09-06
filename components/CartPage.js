@@ -77,11 +77,8 @@ const Item = ({ item,  onPress,onDelete, onEdit,style }) => (
                 borderRadius:20,
                 marginTop:12,}} 
                 onPress={onDelete}>
-                  {/*<Text style={styles.plusminusicon}>-</Text>*/}
                   <Icon1
                 size={18}
-                //style={{flex:1,color:'#6200ee'}}
-                //style={}
                 name={'minus'}></Icon1>
             </TouchableHighlight>
 
@@ -108,7 +105,6 @@ const Item = ({ item,  onPress,onDelete, onEdit,style }) => (
                 marginBottom: 20,
                 borderRadius: 60,
                 marginTop:12,}} >
-                  {/* <Text style={styles.plusminusicon}>+</Text>*/}
                 <Icon1
                 size={20}
                 name={'plus'}></Icon1>
@@ -363,13 +359,9 @@ image:{
   width:120,
   height:130,
   borderRadius:51,
-  //borderColor:'#c5c2c2',
   borderColor:'#ffffff',
   borderWidth:1,
   backgroundColor:'#ffffff',
-  //backgroundColor:'#D3D3D3',
-  //shadowOpacity:0.1,
-  //shadowRadius:15,
   shadowOffset:{
     width:-15,
     height:-15
