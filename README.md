@@ -12,8 +12,7 @@ Team Members -
 
 2.  FOR FONTS -
     - Ensure that your project has contents of /assets/files and react-native.config.js given in the repo.
-    - In terminal (in BookStoreApp) , run the following commands 
-        -   
+    - In terminal (in BookStoreApp) , run the following commands  
           -> react-native link
           -> react-native run-ios
          
@@ -24,23 +23,23 @@ Team Members -
    -  key : <key>UIAppFonts</key>
    -  array of Strings:
             - <array>
-                - <string>AntDesign.ttf</string>
-                - <string>Entypo.ttf</string>
-                - <string>EvilIcons.ttf</string>
-                - <string>Feather.ttf</string>
-                - <string>FontAwesome.ttf</string>
-                - <string>FontAwesome5_Brands.ttf</string>
-                - <string>FontAwesome5_Regular.ttf</string>
-                - <string>FontAwesome5_Solid.ttf</string>
-                - <string>Foundation.ttf</string>
-                - <string>Ionicons.ttf</string>
-                - <string>MaterialIcons.ttf</string>
-                - <string>MaterialDesignIcons.ttf</string>
-                - <string>MaterialCommunityIcons.ttf</string>
-                - <string>SimpleLineIcons.ttf</string>
-                - <string>Octicons.ttf</string>
-                - <string>Zocial.ttf</string>
-            - </array>
+        - <string>AntDesign.ttf</string>
+        - <string>Entypo.ttf</string>
+        - <string>EvilIcons.ttf</string>
+        - <string>Feather.ttf</string>
+        - <string>FontAwesome.ttf</string>
+        - <string>FontAwesome5_Brands.ttf</string>
+        - <string>FontAwesome5_Regular.ttf</string>
+        - <string>FontAwesome5_Solid.ttf</string>
+        - <string>Foundation.ttf</string>
+        - <string>Ionicons.ttf</string>
+        - <string>MaterialIcons.ttf</string>
+        - <string>MaterialDesignIcons.ttf</string>
+        - <string>MaterialCommunityIcons.ttf</string>
+        - <string>SimpleLineIcons.ttf</string>
+        - <string>Octicons.ttf</string>
+        - <string>Zocial.ttf</string>
+        - </array>
   - In terminal (in BookStoreApp) , run the following command
          {react-native run-ios}
          
