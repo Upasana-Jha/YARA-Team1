@@ -4,18 +4,18 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import Home from './components/HomePage';
-import CustomerApp from './components/BookDetails';
+import HomePage from './components/HomePage';
+import BookDetails from './components/BookDetails';
 import Login from './components/Login';
 import CartPage from './components/CartPage';
 import OrderPlaced from './components/OrderPlaced';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
+import SignIn from './components/Signin';
+import SignUp from './components/Signup';
 
 // Import Custom Sidebar
-import CustomSidebarMenu from './CustomSideBarMenu';
+import CustomSidebarMenu from './CustomSidebarMenu';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -56,7 +56,7 @@ function App() {
                 size={23}
                 name={'home-outline'}></Icon>
              ,}} 
-        component={Home} header={false} />
+        component={HomePage} header={false} />
        
         <Drawer.Screen name="BookDetails"
         options={{drawerLabel: 'Book Details', labelStyle:{fontFamily:'Montserrat-Bold',fontWeight: 'normal'}
@@ -64,7 +64,7 @@ function App() {
         drawerIcon: ({ focused, size }) =>  <Icon
         size={23}
         name={'newspaper-outline'}></Icon>,}} 
-        component={CustomerApp} />
+        component={BookDetails} />
         <Drawer.Screen name="CartPage"  options={{drawerLabel: 'Cart',  headerShown:false,
         drawerIcon: ({ focused, size }) =>  <Icon
         size={23}
