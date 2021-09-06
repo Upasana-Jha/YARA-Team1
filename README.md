@@ -13,8 +13,9 @@ Team Members -
 2.  FOR FONTS -
     - Ensure that your project has contents of /assets/files and react-native.config.js given in the repo.
     - In terminal (in BookStoreApp) , run the following commands
-         -- react-native link
-         -- react-native run-ios
+        - 
+            - react-native link
+            - react-native run-ios
          
          
 3. FOR ICONS -
@@ -22,7 +23,7 @@ Team Members -
    - Update key and values as array in "info.plist" file in current BookStore Xcode folder
    -  key : <key>UIAppFonts</key>
    -  array of Strings:
-        -  <array>
+            -  <array>
         - <string>AntDesign.ttf</string>
         - <string>Entypo.ttf</string>
         - <string>EvilIcons.ttf</string>
@@ -39,7 +40,7 @@ Team Members -
         - <string>SimpleLineIcons.ttf</string>
         - <string>Octicons.ttf</string>
         - <string>Zocial.ttf</string>
-        - </array>
+        x- </array>
   - In terminal (in BookStoreApp) , run the following command
          {react-native run-ios}
          
