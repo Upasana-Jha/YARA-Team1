@@ -3,7 +3,6 @@ import { Image,FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpa
 //mport { RadioButton } from 'react-native-paper';
 import { Appbar } from 'react-native-paper';
 import { Icon } from "react-native-elements";
-import Menu from "./Menu";
 import {getBooks} from "../service/BookData"
 //import {addCustomer,deleteCustomer,getCustomers,updateAsyncData} from "../service/CustomerSQLDB"
 
@@ -143,4 +142,3 @@ const styles = StyleSheet.create({
   },
 });
 export default CustomerApp;
-
