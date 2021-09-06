@@ -7,14 +7,13 @@ import Icon1 from 'react-native-vector-icons/AntDesign';
 import Icon3 from 'react-native-vector-icons/Feather';
 import Icon4 from  'react-native-vector-icons/Ionicons';
 import Icon5 from 'react-native-vector-icons/AntDesign';
-//import { require } from "yargs";
+
 
 export default function orderplaced(){
   const navigation = useNavigation();
 
     const placeorder=(navigation)=>{
-        navigation.navigate('CartPage')
-      
+        navigation.navigate('CartPage')  
     }
 
     return(
