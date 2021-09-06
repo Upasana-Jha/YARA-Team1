@@ -12,8 +12,7 @@ Team Members -
 
 2.  FOR FONTS -
     - Ensure that your project has contents of /assets/files and react-native.config.js given in the repo.
-    - In terminal (in BookStoreApp) , run the following commands
-        - 
+    - In terminal (in BookStoreApp) , run the following commands 
             - react-native link
             - react-native run-ios
          
